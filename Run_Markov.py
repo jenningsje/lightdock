@@ -14,13 +14,15 @@ names.close()
 names1 = names_lines[0]
 names2 = names_lines[1]
 
+os.chdir('../../..')
+
 # fetch receptor name
 PDB_ID = search_pdb_by_protein_name(names1)
 first_file_path = cifDownload(PDB_ID)
-print(first_file_path)
 first_file = shutil.move(first_file_path, '../../markov_opensource')
+print(first_file_path)
 
-PDB_ID = search_pdb_by_protein_name(names1)
-second_file = cifDownload(PDB_ID)
+PDB_ID = search_pdb_by_protein_name(names2)
+second_file_path = cifDownload(PDB_ID)
+second_file = shutil.move(second_file_path, '../../markov_opensource')
 print(second_file)
-second_file = shutil.move(first_file_path, '../../markov_opensource')

@@ -1,7 +1,7 @@
 const { exec } = require('child_process');
 
 // execute analyze.py
-const cmd = "Run_Markov.py"
+const cmd = "python Run_Markov.py"
 
 function executeCommand(cmd) {
 	exec(cmd, (error, stdout, stderr) => {
