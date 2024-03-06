@@ -137,4 +137,3 @@ LightDock is being actively developed and some issues may arise or you may need 
 
 LightDock is available under GPLv3 License. See [LICENSE](LICENSE) document for more details.
 
-# markov_opensource
