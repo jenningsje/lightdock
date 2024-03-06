@@ -1,32 +1,47 @@
-const { exec } = require('child_process');
-const path = require('path');
+const express = require('express');
+const bodyParser = require('body-parser');
 
-function runNode(command) {
-    // Run the Node.js file
-    const nodeProcess = exec(command, (error, stdout, stderr) => {
-        if (error) {
-            console.error(`Error executing the Node.js file: ${error.message}`);
+const app = express();
+const port = 3000;
+
+// Middleware to parse JSON request body
+app.use(bodyParser.json());
+
+// Endpoint to handle the click event from the frontend
+app.post('https://markov-backend.internal.graydune-2d508ddb.southcentralus.azurecontainerapps.io/', (req, res) => {
+    console.log('Click event received from the frontend!');
+    // You can perform backend logic here
+    res.send('Click event received successfully!');
+    const fs = require('fs');
+
+    // Read JSON file
+    fs.readFile('input.json', 'utf8', (err, data) => {
+        if (err) {
+            console.error('Error reading JSON file:', err);
             return;
         }
-        if (stderr) {
-            console.error(`stderr: ${stderr}`);
-            return;
+
+        try {
+            const jsonData = JSON.parse(data);
+            const textContent = JSON.stringify(jsonData, null, 4); // Convert JSON to formatted text
+
+            // Write to names
+            fs.writeFile('../MarkovProprietary/pipelinestages/app/mount/input/names.txt', textContent, 'utf8', (err) => {
+                if (err) {
+                    console.error('Error writing to text file:', err);
+                    return;
+                }
+                console.log('Data written to output.txt successfully.');
+            });
+        } catch (err) {
+            console.error('Error parsing JSON:', err);
         }
-        console.log(`Output: ${stdout}`);
     });
-    
-    nodeProcess.on('exit', (code) => {
-        console.log(`Child process exited with code ${code}`);
-    });}
 
-const commands = [
-    'node listen_to_front.ts', 
-    'node /markov_modeules/stages/fetch_pdbs.ts', 
-    'node /markov_modules/stages/lightdock_setup.ts', 
-    'node /markov_modules/stages/lightdock_run.ts',
-    'node /bin/generate_confs.ts']
+});
 
-for (let i = 0; i < commands.length; i++) {
-    runNode(commands[i])
-    console.log(`ran ${commands[i]} in js`)
-}
+// Start the server
+app.listen(port, () => {
+    console.log(`Server is listening at http://localhost:${port}`);
+});
+
