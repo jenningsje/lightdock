@@ -1,4 +1,4 @@
-#!/Users/james/Desktop/file_cabinet/work/bioinformatics/github/Markov/lightdock/venv/bin/python3.8
+#!/Users/james/Desktop/file_cabinet/work/bioinformatics/github/Markov/markov_opensource/venv/bin/python
 
 """Filter LightDock final swarm results depending on the compatibility with the membrane"""
 

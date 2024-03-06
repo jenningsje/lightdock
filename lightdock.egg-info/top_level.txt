@@ -1,0 +1,6 @@
+bin
+init
+lightdock
+markov_modules
+swarm_0
+venv

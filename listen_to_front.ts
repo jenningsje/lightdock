@@ -7,9 +7,9 @@ const port = 3000;
 
 // execute analyze.py
 const commands = [
+    "python Run_Markov.py",
     "lgd_setup.py -s 1 -g 1000 prot1.pdb prot2.pdb --now --noh",
     "lgd_run.py -s scoring.conf setup.json 1 -c 1",
-    "python Run_Markov.py",
     "./bin/lgd_generate_conformations"
 ]
 
