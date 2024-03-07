@@ -1,4 +1,4 @@
-#!/Users/james/Desktop/file_cabinet/work/bioinformatics/github/Markov/markov_opensource/venv/bin/python
+#!/Users/james/Desktop/file_cabinet/work/bioinformatics/github/Markov/lightdock/venv/bin/python3.8
 
 """Generates a set of n_confs conformations of an input pdb_file PDB structure
 using the first non-trivial ANM n_modes in a given rmsd interval"""

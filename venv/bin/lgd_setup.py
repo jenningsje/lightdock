@@ -1,4 +1,4 @@
-#!/Users/james/Desktop/file_cabinet/work/bioinformatics/github/Markov/markov_opensource/venv/bin/python
+#!/Users/james/Desktop/file_cabinet/work/bioinformatics/github/Markov/lightdock/venv/bin/python3.8
 
 """Before launching the LightDock simulation, a setup step is required.
 
