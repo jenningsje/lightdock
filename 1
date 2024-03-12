@@ -12,7 +12,7 @@ RUN virtualenv venv && \
     . venv/bin/activate
 
 # Set the working directory inside the container
-RUN pip3 install Cython==3.0.9
+RUN pip3 install -r requirements.txt
 
 # Copy the Python script into the container
 COPY hello_world.py . 
