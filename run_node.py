@@ -10,3 +10,6 @@ subprocess.run("node lightdock_run.ts", shell=True, stdout=subprocess.PIPE, stde
 print("past 3")
 subprocess.run("node ../generate_confs.ts", shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
 print("past 4")
+
+for command in commands:
+    print(command)

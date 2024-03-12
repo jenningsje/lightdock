@@ -1,5 +1,5 @@
 import sys
-sys.path.append('/Users/james/Desktop/file_cabinet/work/bioinformatics/github/Markov/MarkovProprietary/pipelinestages')
+sys.path.append('../MarkovProprietary/pipelinestages')
 from fetch_from_mount import *
 import os
 import shutil
