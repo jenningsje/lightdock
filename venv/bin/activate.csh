@@ -10,7 +10,7 @@ alias deactivate 'test $?_OLD_VIRTUAL_PATH != 0 && setenv PATH "$_OLD_VIRTUAL_PA
 # Unset irrelevant variables.
 deactivate nondestructive
 
-setenv VIRTUAL_ENV '/Users/james/Desktop/file_cabinet/work/bioinformatics/github/Markov/lightdock/venv'
+setenv VIRTUAL_ENV '/Users/james/Desktop/file_cabinet/work/bioinformatics/github/Markov/lightdock/lightdock/lightdock/venv'
 
 set _OLD_VIRTUAL_PATH="$PATH:q"
 setenv PATH "$VIRTUAL_ENV:q/bin:$PATH:q"

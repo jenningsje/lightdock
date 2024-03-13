@@ -1,4 +1,4 @@
-#!/Users/james/Desktop/file_cabinet/work/bioinformatics/github/Markov/lightdock/venv/bin/python
+#!/Users/james/Desktop/file_cabinet/work/bioinformatics/github/Markov/lightdock/lightdock/lightdock/venv/bin/python
 
 """Generates the PDB structures given a LightDock swarm results file"""
 

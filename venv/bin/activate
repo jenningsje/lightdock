@@ -45,7 +45,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV='/Users/james/Desktop/file_cabinet/work/bioinformatics/github/Markov/lightdock/venv'
+VIRTUAL_ENV='/Users/james/Desktop/file_cabinet/work/bioinformatics/github/Markov/lightdock/lightdock/lightdock/venv'
 if ([ "$OSTYPE" = "cygwin" ] || [ "$OSTYPE" = "msys" ]) && $(command -v cygpath &> /dev/null) ; then
     VIRTUAL_ENV=$(cygpath -u "$VIRTUAL_ENV")
 fi
