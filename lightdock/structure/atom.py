@@ -2,13 +2,14 @@
 
 from lightdock.mathutil.cython.cutil import distance as cdistance
 from lightdock.error.lightdock_errors import AtomError
+from elements import *
 
 
 class Atom(object):
     """Represents a chemical atom"""
 
     BACKBONE_ATOMS = ["CA", "C", "N", "O"]
-    RECOGNIZED_ELEMENTS = ["C", "N", "O", "H", "S", "P", "CL", "MG", "FE", "PB", "SE", "F"]
+    RECOGNIZED_ELEMENTS = elements
     MASSES = {
         "H": 1.007825,
         "C": 12.01,
