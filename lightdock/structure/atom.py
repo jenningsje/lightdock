@@ -10,20 +10,7 @@ class Atom(object):
 
     BACKBONE_ATOMS = ["CA", "C", "N", "O"]
     RECOGNIZED_ELEMENTS = elements
-    MASSES = {
-        "H": 1.007825,
-        "C": 12.01,
-        "F": 18.9984,
-        "O": 15.9994,
-        "N": 14.0067,
-        "S": 31.972071,
-        "P": 30.973762,
-        "CL": 35.45,
-        "MG": 24.3050,
-        "FE": 55.845,
-        "PB": 207.2,
-        "SE": 78.96,
-    }
+    MASSES = mass_dict
 
     def __init__(
         self,
