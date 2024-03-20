@@ -1,24 +1,29 @@
-# start from base
-FROM ubuntu:18.04
+# Start from a Python base image
+FROM python:3.9-slim
 
-# install system-wide deps for python and node
-RUN apt-get -yqq update && \
-    apt-get -yqq install python3-pip python3-dev curl gnupg && \
-    apt-get install -y wget
+# Update and install system packages
+RUN apt-get update && apt-get install -y \
+    curl \
+    wget \
+    gcc \
+    g++ \
+    && rm -rf /var/lib/apt/lists/*
 
-# add requirements.txt to /opt/app
-COPY requirements.txt /opt/app/requirements.txt
-
-# set working directory to /opt/app
+# Create directory for the app
 WORKDIR /opt/app
 
-# install anaconda and all software requirements in requirements.txt
+# Install Python dependencies
 RUN pip3 install virtualenv
 RUN virtualenv venv && \
-    . venv/bin/activate
+    . venv/bin/activate && \
+    pip install --no-cache-dir -U pip
 
-# Copy the Python script into /opt/app
-COPY . /opt/app
+# Copy the application code
+COPY . .
 
-# start app
-CMD [ "python3", "hello_world.py" ]
+# Install the application in editable mode
+RUN . venv/bin/activate && \
+    pip install --no-cache-dir -e .
+
+# Set the entry point
+ENTRYPOINT ["python3", "hello_world.py"]
