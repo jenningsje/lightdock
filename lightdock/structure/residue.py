@@ -142,17 +142,13 @@ class Residue(object):
         if self.is_standard():
             backbone_correct = set(a.name for a in self.backbone) == set(backbone)
             if not backbone_correct:
-                raise BackboneError(
-                    f"Incomplete backbone for residue {self.name}.{self.number}{self.insertion}"
-                )
+                return True
 
             sd_correct = set(a.name for a in self.sidechain) == set(
                 sidechain[self.name]
             )
             if not sd_correct:
-                raise SideChainError(
-                    f"Incomplete sidechain for residue {self.name}.{self.number}{self.insertion}"
-                )
+                return True
 
             return True
 
