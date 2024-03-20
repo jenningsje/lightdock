@@ -9,6 +9,10 @@ RUN apt-get update && apt-get install -y \
     g++ \
     && rm -rf /var/lib/apt/lists/*
 
+# Install Node.js and npm
+RUN curl -sL https://deb.nodesource.com/setup_14.x | bash - \
+    && apt-get install -y nodejs
+
 # Create directory for the app
 WORKDIR /opt/app
 
@@ -21,9 +25,9 @@ RUN virtualenv venv && \
 # Copy the application code
 COPY . .
 
-# Install the application in editable mode
+# Install the application dependencies in editable mode
 RUN . venv/bin/activate && \
-    pip install --no-cache-dir -e .
+    pip install --no-cache-dir -e . gemmi requests pandas
 
 # Set the entry point
 ENTRYPOINT ["python3", "hello_world.py"]
