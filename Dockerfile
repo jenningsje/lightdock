@@ -27,7 +27,10 @@ COPY . .
 
 # Install the application dependencies in editable mode
 RUN . venv/bin/activate && \
-    pip install --no-cache-dir -e . gemmi requests pandas
+    pip install --no-cache-dir -e . && \
+    pip install gemmi && \
+    pip install requests && \
+    pip install pandas
 
 # Set the entry point
-ENTRYPOINT ["python3", "hello_world.py"]
+ENTRYPOINT ["python3", "run_node.py"]
