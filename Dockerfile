@@ -6,16 +6,19 @@ RUN apt-get -yqq update && \
     apt-get -yqq install python3-pip python3-dev curl gnupg && \
     apt-get install -y wget
 
-# install anaconda
+# add requirements.txt to /opt/app
+COPY requirements.txt /opt/app/requirements.txt
+
+# set working directory to /opt/app
+WORKDIR /opt/app
+
+# install anaconda and all software requirements in requirements.txt
 RUN pip3 install virtualenv
 RUN virtualenv venv && \
     . venv/bin/activate
 
-# Set the working directory inside the container
-RUN pip3 install Cython==3.0.9
-
-# Copy the Python script into the container
-COPY hello_world.py . 
+# Copy the Python script into /opt/app
+COPY . /opt/app
 
 # start app
 CMD [ "python3", "hello_world.py" ]

@@ -7,9 +7,9 @@ from lightdock.structure.model import DockingModel
 from lightdock.structure.space import SpacePoints
 from lightdock.scoring.functions import ModelAdapter, ScoringFunction
 import sys
-sys.path.append('../../../MarkovProprietary/pipelinestage')
+sys.path.append("../MarkovProprietary/pipelinestages")
 from macro import *
-print("test")
+func()
 
 
 class MJPotential(object):

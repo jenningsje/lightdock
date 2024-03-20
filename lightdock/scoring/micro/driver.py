@@ -3,7 +3,7 @@
 from lightdock.structure.model import DockingModel
 from lightdock.scoring.functions import ModelAdapter, ScoringFunction
 import sys
-sys.path.append('../../../MarkovProprietary/pipelinestage')
+sys.path.append("../MarkovProprietary/pipelinestages")
 from micro import *
 print("test")
 
