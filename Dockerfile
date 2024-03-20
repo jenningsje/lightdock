@@ -16,14 +16,14 @@ RUN curl -sL https://deb.nodesource.com/setup_14.x | bash - \
 # Create directory for the app
 WORKDIR /opt/app
 
+# Copy the application code from lightdock directory
+COPY lightdock/. .
+
 # Install Python dependencies
 RUN pip3 install virtualenv
 RUN virtualenv venv && \
     . venv/bin/activate && \
     pip install --no-cache-dir -U pip
-
-# Copy the application code
-COPY . .
 
 # Install the application dependencies in editable mode
 RUN . venv/bin/activate && \
@@ -33,4 +33,4 @@ RUN . venv/bin/activate && \
     pip install pandas
 
 # Set the entry point
-ENTRYPOINT ["python3", "run_node.py"]
+ENTRYPOINT ["python3", "./hello_world.py"]
