@@ -37,6 +37,8 @@ from lightdock.version import CURRENT_VERSION
 
 log = LoggingManager.get_logger("lgd_setup")
 
+print("in simulation")
+
 
 def get_pdb_files(input_file):
     """Get a list of the PDB files in the input_file"""

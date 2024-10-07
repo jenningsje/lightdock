@@ -8,6 +8,7 @@ from lightdock.util.logger import LoggingManager
 
 log = LoggingManager.get_logger("pdb")
 
+print("in PDBIO")
 
 def cstrip(string):
     """Remove unwanted symbols from string."""

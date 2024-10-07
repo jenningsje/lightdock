@@ -9,6 +9,7 @@ from lightdock.error.lightdock_errors import (
 )
 from lightdock.structure.atom import Atom
 
+print("residue")
 
 backbone = ["N", "CA", "C", "O"]
 
@@ -142,13 +143,17 @@ class Residue(object):
         if self.is_standard():
             backbone_correct = set(a.name for a in self.backbone) == set(backbone)
             if not backbone_correct:
-                return True
+                raise BackboneError(
+                    f"Incomplete backbone for residue {self.name}.{self.number}{self.insertion}"
+                )
 
             sd_correct = set(a.name for a in self.sidechain) == set(
                 sidechain[self.name]
             )
             if not sd_correct:
-                return True
+                raise SideChainError(
+                    f"Incomplete sidechain for residue {self.name}.{self.number}{self.insertion}"
+                )
 
             return True
 

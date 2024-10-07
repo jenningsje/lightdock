@@ -7,10 +7,11 @@ from lightdock.structure.model import DockingModel
 from lightdock.structure.space import SpacePoints
 from lightdock.scoring.functions import ModelAdapter, ScoringFunction
 import sys
-sys.path.append("../MarkovProprietary/pipelinestages")
+print("in macro")
+parent_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '../MarkovProprietary/pipelinestages'))
+sys.path.insert(0, parent_dir)
 from macro import *
-func()
-
+print("imported macro")
 
 class MJPotential(object):
     """Loads MJ potentials information"""
@@ -160,7 +161,7 @@ class MacroScoringFunction(ScoringFunction):
     
     def __call__(self, receptor, receptor_coordinates, ligand, ligand_coordinates):
         print("running")
-        Gibbs_Total = macro(receptor, receptor_coordinates, ligand, ligand_coordinates)
+        Gibbs_Total = gibbs_macro(receptor, receptor_coordinates, ligand, ligand_coordinates)
         
         return Gibbs_Total
 

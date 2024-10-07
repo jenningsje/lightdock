@@ -1,5 +1,0 @@
-bin
-init
-lightdock
-node
-venv

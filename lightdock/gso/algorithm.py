@@ -14,6 +14,7 @@ from lightdock.gso.initializer import (
     LightdockFromFileInitializer,
 )
 
+print("in algorithm")
 
 class GSO(object):
     """GSO is the main simulation object"""

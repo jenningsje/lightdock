@@ -10,6 +10,7 @@ from lightdock.constants import (
 )
 from lightdock.mathutil.cython.quaternion import Quaternion
 
+print("in landscape")
 
 class LandscapePosition(object):
     """Represents glowworm's current position in the objective function space.
@@ -18,6 +19,7 @@ class LandscapePosition(object):
     Different spaces should implement different approaches for move() and
     distance() functions.
     """
+    print("in landscape")
 
     def __init__(self, objective_function, coordinates, step=DEFAULT_STEP_SIZE):
         self.objective_function = objective_function

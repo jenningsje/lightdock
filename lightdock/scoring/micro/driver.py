@@ -1,11 +1,16 @@
-"""Template scoring function"""
+"""Micro Scoring Function
+"""
+
 
 from lightdock.structure.model import DockingModel
 from lightdock.scoring.functions import ModelAdapter, ScoringFunction
 import sys
-sys.path.append("../MarkovProprietary/pipelinestages")
+import os
+print("in micro")
+parent_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '../MarkovProprietary/pipelinestages'))
+sys.path.insert(0, parent_dir)
 from micro import *
-print("test")
+print("imported micro")
 
 class MicroAdapter(ModelAdapter):
     """Adapts a given Complex to a DockingModel object suitable for this
@@ -38,7 +43,7 @@ class MicroScoringFunction(ScoringFunction):
     
     def __call__(self, receptor, receptor_coordinates, ligand, ligand_coordinates):
         print("running")
-        Gibbs_Total = micro(receptor, receptor_coordinates, ligand, ligand_coordinates)
+        Gibbs_Total = gibbs_micro(receptor, receptor_coordinates, ligand, ligand_coordinates)
         
         return Gibbs_Total
 

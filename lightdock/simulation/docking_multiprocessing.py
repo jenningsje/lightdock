@@ -34,6 +34,7 @@ from lightdock.error.lightdock_errors import NotSupportedInScoringError, SwarmNu
 
 log = LoggingManager.get_logger("lgd_run")
 
+print("in dockeing multiprocessing")
 
 def set_gso(
     number_of_glowworms,

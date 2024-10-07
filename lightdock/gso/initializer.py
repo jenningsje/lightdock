@@ -9,6 +9,7 @@ from lightdock.gso.searchspace.landscape import (
 )
 from lightdock.mathutil.lrandom import MTGenerator
 
+print("in initializer")
 
 class Initializer(object):
     """Generates a population of glowworms.
