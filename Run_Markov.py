@@ -1,4 +1,4 @@
-import sys, shutil, time, subprocess, logging, os
+import sys, time, logging, os
 sys.path.append('../MarkovProprietary/pipelinestages')
 sys.path.append('..')
 from gemmi import *
@@ -6,8 +6,8 @@ from fetch_from_mount import *
 from fetch_from_alphafold import *
 from fetch_protein import *
 from simulate import *
-
-import logging
+from calibration import *
+import shutil
 
 # Configure logging
 logging.basicConfig(
@@ -30,10 +30,31 @@ def Markov():
 
         try:
 
-            logging.info(f"current directoy is: {os.getcwd()}")
+            logging.info(f"current directoy is: {os.getcwd()} test1")
 
-            with open('../output/from_front_end.txt', 'w'):
-                pass
+            # make swarm_0 the starting directory so attempt to go into it
+            try:
+                logging.info(f"current directory is {os.getcwd()} test2")
+                os.chdir("../../../../../lightdock/swarm_0")
+
+            # otherwise it is likely that the swarm directoy is the current one, get the current directory
+            except Exception as e:
+                logging.info(f"current directory is {os.getcwd()} test3")
+
+            # attempt to remove swarm_0
+            os.chdir('..')
+            cleanup_lightdock()
+
+            os.chdir("../MarkovProprietary/pipelinestages/app/mount/input")
+
+            try:
+                with open("../output/from_front_end.txt", 'w'):
+                    pass
+
+            except Exception as e:
+                os.chdir("../../MarkovProprietary/pipelinestages/app/mount/input")
+                with open("../output/from_front_end.txt", 'w'):
+                    pass
 
             # fetch the current signal from the front end
             from_front_end_size = os.path.getsize("../output/from_front_end.txt")
@@ -42,7 +63,6 @@ def Markov():
                 with open("../output/message.txt", "w") as message:
                     message.write("fetch the next two proteins...")
                     logger.info("fetch the next two proteins...")
-                    
                     time.sleep(5) 
 
             # retrieve the size of file
@@ -96,7 +116,7 @@ def Markov():
                     logger.info("inside if statement")
 
                     # fetch user input and create an empty names.txt file
-                    with open("names.txt", "w") as names:
+                    with open("names.txt", "r+") as names:
                         # read the lines of names.txt
                         names_lines = names.readlines()
 
@@ -225,22 +245,12 @@ def Markov():
 
             simulator()
 
-            logging.info(f"current working directory: {os.getcwd()} changing to /app/mount/input")
-            os.chdir("../MarkovProprietary/pipelinestages/app/mount/input")
-
-            logging.info(f"current working directory: {os.getcwd()} attempting open from_front_end.txt")
-            from_front_end = open("../output/from_front_end.txt")
-            from_front_end_lines = from_front_end.readlines()
-
-            while from_front_end_lines[0] != simulation_finished:
-                from_front_end = open("../output/from_front_end.txt")
-                from_front_end_lines = from_front_end.readlines()
-                logging.info(f"not past while loop, front_front_end_lines: {from_front_end_lines[0]}")
-                time.sleep(1)
-
-            logging.info(f"past while loop, front_front_end_lines: {from_front_end_lines[0]}")
-
-            logging.info(f"current working directory before swiching to input diretory {os.getcwd()}")
+            try:
+                os.makedirs("swarm_0", exist_ok=True)
+            except Exception as e:
+                # Log the exception and continue the loop
+                logger.error(f"Error occurred: {e}", exc_info=True)
+                time.sleep(5)
 
         except Exception as e:
             # Log the exception and continue the loop
